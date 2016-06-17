@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-DEPARTAMENTO-01">
+        <createTable schemaName="public" tableName="departamento"> 
+            <column name="id" type="INT8">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="nombre" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_creacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_modificacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cod_divipola" type="VARCHAR(10)">
+                 <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-DEPARTAMENTO">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="id"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="departamento"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-DEPARTAMENTO">
+        <addPrimaryKey columnNames="id" constraintName="id_departamento_pk" schemaName="public" tableName="departamento"/>
+    </changeSet>
+	
+</databaseChangeLog>
