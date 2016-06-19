@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 	
     <changeSet author="juan.orjuela" id="CREATE-TABLE-ESTADO-01">
-        <createTable schemaName="public" tableName="estado"> 
+        <createTable schemaName="public" tableName="estado" > 
             <column name="id_estado" type="INT8">
-                <constraints nullable="false"/>
+                <constraints nullable="false" remarks="codigo del estado"/>
             </column>
 
             <column name="descripcion" type="VARCHAR(15)">
