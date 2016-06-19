@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-ESTADO-01">
+        <createTable schemaName="public" tableName="estado"> 
+            <column name="id_estado" type="INT8">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="descripcion" type="VARCHAR(15)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-ESTADO">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="id_estado"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="estado"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-ESTADO">
+        <addPrimaryKey columnNames="id_estado" constraintName="id_estado_pk" schemaName="public" tableName="estado"/>
+    </changeSet>
+	
+</databaseChangeLog>
