@@ -6,8 +6,8 @@
 	
     <changeSet author="juan.orjuela" id="CREATE-TABLE-ESTADO-01">
         <createTable schemaName="public" tableName="estado" > 
-            <column name="id_estado" type="INT8">
-                <constraints nullable="false" remarks="codigo del estado"/>
+            <column name="id_estado" type="INT8" remarks="codigo del estado">
+                <constraints nullable="false"/>
             </column>
 
             <column name="descripcion" type="VARCHAR(15)">

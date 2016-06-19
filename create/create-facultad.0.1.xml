@@ -7,7 +7,7 @@
     <changeSet author="juan.orjuela" id="CREATE-TABLE-FACULTAD-01">
         <createTable schemaName="public" tableName="facultad"> 
             <column name="cod_facultad" type="INT8" remarks="codigo facultad">
-                <constraints nullable="false" remarks="codigo de la facultad pk"/>
+                <constraints nullable="false"/>
             </column>
 
             <column name="nombre" type="VARCHAR(30)">
