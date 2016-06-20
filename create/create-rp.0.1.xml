@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-RP-01">
+        <createTable schemaName="public" tableName="rp"> 
+            <column name="id_rp" type="INT8" remarks="id del robruro presupuestal">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="valor" type="NUMERIC(10,0)" >
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="id_cdp_cdp" type="INT8" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="cod_proy_curricular_proyecto_curricular" type="INT8" >
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="fecha_creacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_modificacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            
+         </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-RP">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="id_rp"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="rp"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-RP">
+        <addPrimaryKey columnNames="id_rp" constraintName="id_rp_pk" schemaName="public" tableName="rp" />
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-FK-RP-CDP">
+        <addForeignKeyConstraint 
+            baseColumnNames="id_cdp_cdp"
+            baseTableName="rp"
+            constraintName="cdp_fk"
+            onDelete="RESTRICT"
+            onUpdate="CASCADE"
+            referencedColumnNames="id_cdp"
+            referencedTableName="cdp"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-FK-RP-ESTADO">
+        <addForeignKeyConstraint 
+            baseColumnNames="cod_proy_curricular_proyecto_curricular"
+            baseTableName="rp"
+            constraintName="proyecto_curricular_fk"
+            onDelete="RESTRICT"
+            onUpdate="CASCADE"
+            referencedColumnNames="cod_proy_curricular"
+            referencedTableName="proyecto_curricular"/>
+    </changeSet>
+        	
+</databaseChangeLog>
