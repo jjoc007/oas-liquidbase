@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-INFO_ENTIDAD-01">
+        <createTable schemaName="public" tableName="info_entidad"> 
+            <column name="id_info" type="INT8" remarks="id del dato para el contacto">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="direccion" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="telefono" type="NUMERIC(10,0)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ext-telefono" type="NUMERIC(5,0)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fax" type="NUMERIC(10,0)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="ext_fax" type="NUMERIC(4,0)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="email" type="VARCHAR(30)">
+                <constraints nullable="true"/>
+            </column>
+                       
+            <column name="id_entidad_entidad" type="INT8" >
+                <constraints nullable="false"/>
+            </column>
+                        
+            <column name="fecha_creacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_modificacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            
+         </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-INFO_ENTIDAD">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="id_info"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="info_entidad"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-INFO_ENTIDAD">
+        <addPrimaryKey columnNames="id_info" constraintName="id_dato_contacto" schemaName="public" tableName="info_entidad" />
+    </changeSet>
+
+    
+    <changeSet author="juan.orjuela" id="CREATE-FK-INFO_ENTIDAD-ENTIDAD">
+        <addForeignKeyConstraint 
+            baseColumnNames="id_entidad_entidad"
+            baseTableName="info_entidad"
+            constraintName="entidad_fk"
+            onDelete="RESTRICT"
+            onUpdate="CASCADE"
+            referencedColumnNames="id_entidad"
+            referencedTableName="entidad"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-UC-ENTIDAD">
+        <addUniqueConstraint 
+                catalogName="cat"
+                columnNames="id_entidad_entidad"
+                constraintName="info_entidad-uq"
+                schemaName="public"
+                tableName="info_entidad"/>
+    </changeSet>
+
+    	
+</databaseChangeLog>
