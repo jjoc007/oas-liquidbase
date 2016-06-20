@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-LEY-01">
+        <createTable schemaName="public" tableName="ley"> 
+            <column name="id_ley" type="INT8">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="nombre" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="descripcion" type="TEXT">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="fecha_expedicion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_vencimiento" type="DATE">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="fecha_creacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_modificacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            
+        </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-LEY">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="id_ley"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="ley"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-LEY">
+        <addPrimaryKey columnNames="id_ley" constraintName="id_ley_pk" schemaName="public" tableName="ley"/>
+    </changeSet>
+	
+</databaseChangeLog>

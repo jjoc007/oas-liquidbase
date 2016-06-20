@@ -9,4 +9,6 @@
 	<include file="create/create-departamento.0.1.xml" relativeToChangelogFile="true"/>
 	<include file="create/create-estado.0.1.xml" relativeToChangelogFile="true"/>
 	<include file="create/create-facultad.0.1.xml" relativeToChangelogFile="true"/>
+	<include file="create/create-ley.0.1.xml" relativeToChangelogFile="true"/>
+
 </databaseChangeLog>
