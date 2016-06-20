@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-CDP-01">
+        <createTable schemaName="public" tableName="cdp"> 
+            <column name="id_cdp" type="INT8" remarks="id ">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="codigo" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="id_rubro_rubro" type="INT8" remarks="codigo rubro">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="fecha_creacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_modificacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            
+         </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-CDP">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="id_cdp"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="cdp"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-CDP">
+        <addPrimaryKey columnNames="id_cdp" constraintName="id_cdp_pk" schemaName="public" tableName="cdp" />
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-FK-CDP-RUBRO">
+        <addForeignKeyConstraint 
+            baseColumnNames="id_rubro_rubro"
+            baseTableName="cdp"
+            constraintName="rubro_fk"
+            onDelete="RESTRICT"
+            onUpdate="CASCADE"
+            referencedColumnNames="id_rubro"
+            referencedTableName="rubro"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-UC-CDP">
+        <addUniqueConstraint 
+                catalogName="cat"
+                columnNames="id_rubro_rubro"
+                constraintName="cdp-uq"
+                schemaName="public"
+                tableName="cdp"/>
+    </changeSet>
+	
+</databaseChangeLog>
