@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-TIPO_ENTIDAD-01">
+        <createTable schemaName="public" tableName="tipo_entidad" remarks="tipos de entidades (arl, eps, etc)"> 
+            <column name="id_tipo_enti" type="INT8" remarks="id del tipo de entidad">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="descripcion" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_creacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_modificacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            
+        </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-TIPO_ENTIDAD">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="id_tipo_enti"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="tipo_entidad"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-TIPO_ENTIDAD">
+        <addPrimaryKey columnNames="id_tipo_enti" constraintName="id_tipo_entidad_pk" schemaName="public" tableName="tipo_entidad"/>
+    </changeSet>
+	
+</databaseChangeLog>

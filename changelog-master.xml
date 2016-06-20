@@ -11,5 +11,7 @@
 	<include file="create/create-facultad.0.1.xml" relativeToChangelogFile="true"/>
 	<include file="create/create-ley.0.1.xml" relativeToChangelogFile="true"/>
 	<include file="create/create-rubro.0.1.xml" relativeToChangelogFile="true"/>
+	<include file="create/create-tipo_entidad.0.1.xml" relativeToChangelogFile="true"/>
+	<include file="create/create-cargo.0.1.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

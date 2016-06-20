@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-CARGO-01">
+        <createTable schemaName="public" tableName="cargo"> 
+            <column name="id_cargo" type="INT8" remarks="id cargo pk">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="descripcion" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="porcentaje_pago" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="id_ley" type="SMALLINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="id_ley_ley" type="INT8">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_creacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_modificacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+    
+         </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-CARGO">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="id_cargo"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="cargo"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-CARGO">
+        <addPrimaryKey columnNames="id_cargo" constraintName="id_cargo_pk" schemaName="public" tableName="cargo"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-FK-CARGO-LEY">
+        <addForeignKeyConstraint 
+            baseColumnNames="id_ley_ley"
+            baseTableName="cargo"
+            constraintName="ley_fk"
+            onDelete="SET NULL"
+            onUpdate="CASCADE"
+            referencedColumnNames="id_ley"
+            referencedTableName="ley"/>
+    </changeSet>
+	
+</databaseChangeLog>
