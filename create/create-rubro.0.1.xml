@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-RUBRO-01">
+        <createTable schemaName="public" tableName="rubro"> 
+            <column name="id_rubro" type="INT8" remarks="codigo rubro">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="codigo" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cuenta_bruto" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cuenta_neto" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_creacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_modificacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-RUBRO">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="id_rubro"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="rubro"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-RUBRO">
+        <addPrimaryKey columnNames="id_rubro" constraintName="id_rubro_pk" schemaName="public" tableName="rubro"/>
+    </changeSet>
+	
+</databaseChangeLog>
