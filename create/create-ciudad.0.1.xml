@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-CIUDAD-01">
+        <createTable schemaName="public" tableName="ciudad"> 
+            <column name="id_ciudad" type="INT8">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="nombre" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="id_departamento" type="INT8">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="fecha_creacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_modificacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cod_divipola" type="VARCHAR(10)">
+                 <constraints nullable="false"/>
+            </column>
+    
+         </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-CIUDAD">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="id_ciudad"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="ciudad"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-CIUDAD">
+        <addPrimaryKey columnNames="id_ciudad" constraintName="id_ciudad_pk" schemaName="public" tableName="ciudad"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-FK-CIUDAD-DEPARTAMENTO">
+        <addForeignKeyConstraint 
+            baseColumnNames="id_departamento"
+            baseTableName="ciudad"
+            constraintName="departamento_fk"
+            onDelete="RESTRICT"
+            onUpdate="CASCADE"
+            referencedColumnNames="id"
+            referencedTableName="departamento"/>
+    </changeSet>
+	
+</databaseChangeLog>
