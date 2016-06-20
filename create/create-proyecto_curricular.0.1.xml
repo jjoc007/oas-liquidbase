@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-PROYECTO_CURRICULAR-01">
+        <createTable schemaName="public" tableName="proyecto_curricular"> 
+            <column name="cod_proy_curricular" type="INT8" remarks="codigo del proyecto curricular">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="nombre" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="cuenta_bruto" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cod_concepto" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="id_estado_estado" type="INT8">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cod_facultad_facultad" type="INT8" remarks="codigo facultad">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="fecha_creacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_modificacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cod_snies" type="VARCHAR(10)">
+                 <constraints nullable="false"/>
+            </column>
+    
+         </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-PROYECTO_CURRICULAR">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="cod_proy_curricular"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="proyecto_curricular"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-PROYECTO_CURRICULAR">
+        <addPrimaryKey columnNames="cod_proy_curricular" constraintName="id_proyecto_curricular_pk" schemaName="public" tableName="proyecto_curricular"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-FK-PROYECTO_CURRICULAR-ESTADO">
+        <addForeignKeyConstraint 
+            baseColumnNames="id_estado_estado"
+            baseTableName="proyecto_curricular"
+            constraintName="estado_fk"
+            onDelete="RESTRICT"
+            onUpdate="CASCADE"
+            referencedColumnNames="id_estado"
+            referencedTableName="estado"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-FK-PROYECTO_CURRICULAR-FACULTAD">
+        <addForeignKeyConstraint 
+            baseColumnNames="cod_facultad_facultad"
+            baseTableName="proyecto_curricular"
+            constraintName="facultad_fk"
+            onDelete="RESTRICT"
+            onUpdate="CASCADE"
+            referencedColumnNames="cod_facultad"
+            referencedTableName="facultad"/>
+    </changeSet>
+	
+</databaseChangeLog>
