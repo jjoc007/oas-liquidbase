@@ -16,5 +16,7 @@
 	<include file="create/create-ciudad.0.1.xml" relativeToChangelogFile="true"/>
 	<include file="create/create-proyecto_curricular.0.1.xml" relativeToChangelogFile="true"/>
 	<include file="create/create-cdp.0.1.xml" relativeToChangelogFile="true"/>
+	<include file="create/create-entidad.0.1.xml" relativeToChangelogFile="true"/>
+	
 
 </databaseChangeLog>

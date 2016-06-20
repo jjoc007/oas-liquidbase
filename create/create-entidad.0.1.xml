@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-ENTIDAD-01">
+        <createTable schemaName="public" tableName="entidad"> 
+            <column name="id_entidad" type="INT8" remarks="id de la entidad">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="nit" type="VARCHAR(10)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="codigo" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="id_tipo_enti_tipo_entidad" type="INT8" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_estado_estado" type="INT8" >
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="id_ciudad_ciudad" type="INT8" >
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="fecha_creacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_modificacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            
+         </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-ENTIDAD">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="id_entidad"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="entidad"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-ENTIDAD">
+        <addPrimaryKey columnNames="id_entidad" constraintName="id_entidad_pk" schemaName="public" tableName="entidad" />
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-FK-ENTIDAD-CIUDAD">
+        <addForeignKeyConstraint 
+            baseColumnNames="id_ciudad_ciudad"
+            baseTableName="entidad"
+            constraintName="ciudad_fk"
+            onDelete="RESTRICT"
+            onUpdate="CASCADE"
+            referencedColumnNames="id_ciudad"
+            referencedTableName="ciudad"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-FK-ENTIDAD-ESTADO">
+        <addForeignKeyConstraint 
+            baseColumnNames="id_estado_estado"
+            baseTableName="entidad"
+            constraintName="estado_fk"
+            onDelete="RESTRICT"
+            onUpdate="CASCADE"
+            referencedColumnNames="id_estado"
+            referencedTableName="estado"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-FK-ENTIDAD-TIPO_ENTIDAD">
+        <addForeignKeyConstraint 
+            baseColumnNames="id_tipo_enti_tipo_entidad"
+            baseTableName="entidad"
+            constraintName="tipo_entidad_fk"
+            onDelete="RESTRICT"
+            onUpdate="CASCADE"
+            referencedColumnNames="id_tipo_enti"
+            referencedTableName="tipo_entidad"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-UC-ESTADO">
+        <addUniqueConstraint 
+                catalogName="cat"
+                columnNames="id_estado_estado"
+                constraintName="entidad-uq"
+                schemaName="public"
+                tableName="entidad"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-UC-CIUDAD">
+        <addUniqueConstraint 
+                catalogName="cat"
+                columnNames="id_ciudad_ciudad"
+                constraintName="entidad-uql"
+                schemaName="public"
+                tableName="entidad"/>
+    </changeSet>
+	
+</databaseChangeLog>
