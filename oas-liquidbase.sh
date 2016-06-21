@@ -8,20 +8,16 @@
 #                 basicas de Liquibase                                    |
 # ------------------------------------------------------------------------
 
-echo ""
-echo "Advertencia: Se ejecutara la operacion $0 ..."
-
-WORK_DIR=/home/jjorjuela/Documentos/juanjoseorjuela/liquidbase
+WORK_DIR=/var/liquidbase-oas
 cd $WORK_DIR
 
-JAVA_DIR=/usr/lib/jvm/java-8-openjdk-amd64/bin
 JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF-8"
-LQBS_DIR=/home/jjorjuela/liquibase/
-OUTPUT_DIR=/home/jjorjuela/Documentos/juanjoseorjuela/liquidbase/logs
+LQBS_DIR=/var/liquibase/
+OUTPUT_DIR=/var/liquidbase/logs
 
 DRIVER=org.postgresql.Driver
 CLASSPATH=$LQBS_DIR/lib/postgresql-9.2-1002.jdbc4.jar
-URL=jdbc:postgresql://localhost:5432/prueba
+URL=jdbc:postgresql://localhost:5432/OAS-API
 CHANGELOGFILE=changelog-master.xml
 LOGGIN=info
 
@@ -29,5 +25,5 @@ USERNAME=postgres
 PASSWORD=123456
 
 
-$JAVA_DIR/java -jar $LQBS_DIR/liquibase.jar --driver=$DRIVER --classpath=$CLASSPATH --url=$URL \
+java -jar $LQBS_DIR/liquibase.jar --driver=$DRIVER --classpath=$CLASSPATH --url=$URL \
   --username=$USERNAME --password=$PASSWORD --changeLogFile=$CHANGELOGFILE --logLevel=$LOGGIN update
