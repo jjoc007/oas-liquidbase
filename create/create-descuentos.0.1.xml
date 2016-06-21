@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	
+    <changeSet author="juan.orjuela" id="CREATE-TABLE-DESCUENTOS-01">
+        <createTable schemaName="public" tableName="descuentos"> 
+            <column name="id_descuento" type="INT8" remarks="id del descuento">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="tipo" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="codigo" type="NUMERIC(10,0)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="valor" type="MONEY" >
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="id_entidad_entidad" type="INT8" >
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_creacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fecha_modificacion" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            
+         </createTable>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-AUTOINCREMENT-DESCUENTOS">
+        <addAutoIncrement catalogName="cat"
+            columnDataType="int"
+            columnName="id_descuento"
+            incrementBy="1"
+            schemaName="public"
+            startWith="100"
+            tableName="descuentos"/>
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-PK-DESCUENTOS">
+        <addPrimaryKey columnNames="id_descuento" constraintName="id_descuentos_pk" schemaName="public" tableName="descuentos" />
+    </changeSet>
+
+    <changeSet author="juan.orjuela" id="CREATE-FK-DESCUENTOS-CIUDAD">
+        <addForeignKeyConstraint 
+            baseColumnNames="id_entidad_entidad"
+            baseTableName="descuentos"
+            constraintName="entidad_fk"
+            onDelete="RESTRICT"
+            onUpdate="CASCADE"
+            referencedColumnNames="id_entidad"
+            referencedTableName="entidad"/>
+    </changeSet>
+    	
+</databaseChangeLog>
