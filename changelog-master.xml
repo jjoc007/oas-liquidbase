@@ -18,7 +18,7 @@
 	<include file="create/create-cdp.0.1.xml" relativeToChangelogFile="true"/>
 	<include file="create/create-entidad.0.1.xml" relativeToChangelogFile="true"/>
 	<include file="create/create-info_entidad.0.1.xml" relativeToChangelogFile="true"/>
-	<include file="create/create-descuentos.0.1.xml" relativeToChangelogFile="true"/>
+	<!-- <include file="create/create-descuentos.0.1.xml" relativeToChangelogFile="true"/> -->
 	<include file="create/create-rp.0.1.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
