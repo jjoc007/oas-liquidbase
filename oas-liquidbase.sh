@@ -12,11 +12,11 @@ WORK_DIR=/var/liquidbase-oas
 cd $WORK_DIR
 
 JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF-8"
-LQBS_DIR=/var/liquibase/
+LQBS_DIR=/var/liquibase
 OUTPUT_DIR=/var/liquidbase/logs
 
 DRIVER=org.postgresql.Driver
-CLASSPATH=$LQBS_DIR/lib/postgresql-9.2-1002.jdbc4.jar
+CLASSPATH=$LQBS_DIR/lib/postgresql-JDBC.jar
 URL=jdbc:postgresql://localhost:5432/OAS-API
 CHANGELOGFILE=changelog-master.xml
 LOGGIN=info
