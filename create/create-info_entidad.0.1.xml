@@ -18,7 +18,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="ext-telefono" type="NUMERIC(5,0)">
+            <column name="ext_telefono" type="NUMERIC(5,0)">
                 <constraints nullable="false"/>
             </column>
 
